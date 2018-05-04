@@ -29,7 +29,7 @@ CREATE TABLE  test_case (
         insert into test_case
           values (i, mod(i,100),sysdate-mod(i,100),
             repeat (substr ('ABCDEFGHIJ',mod(i,10),1),10),
-            mod(1,100), SYSDATE-MOD(i,1000),
+            mod(1,100), SYSDATE-MOD(i,100),
             repeat (substr ('ABCDEFGHIJ',mod(i,10),1),10)
       );
     
@@ -40,7 +40,25 @@ CREATE TABLE  test_case (
     end;
     
         
-        
+---
+
+
+select count (*) from test_case;
+
+EXPLAIN PLAN SET STATEMENT_ID ='bad2' FOR
+select  * from test_case
+where col_d2 =
+(select min(col_d2) from test_case
+where col_pk <= 1000 or col_pk > 990000);
+
+
+select * from table (DBMS_XPLAN.DISPLAY('PLAN_TABLE','bad2','TYPICAL'));
+
+ALTER TABLE TEST_CASE ADD CONSTRAINT TEST_CASE_PK PRIMARY KEY (col_pk);
+
+
+
+
 
 
 
