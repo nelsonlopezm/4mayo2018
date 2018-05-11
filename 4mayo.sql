@@ -91,7 +91,7 @@ SELECT  first_name, last_name
     
     
     --- 11mayo
-    --hola mundo
+    --- Exceptions
     
     
     
