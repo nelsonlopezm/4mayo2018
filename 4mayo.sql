@@ -87,3 +87,11 @@ SELECT  first_name, last_name
     ---------
     
     select * from SYS.PLAN_TABLE$
+    
+    
+    
+    --- 11mayo
+    --hola mundo
+    
+    
+    
